@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoya mi Sueño - Santiago Dorado</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#facc15',
+                            500: '#eab308',
+                        },
+                        brand: {
+                            500: '#9333ea', // purple-600
+                            600: '#7e22ce', // purple-700
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4c1d95; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7e22ce; 
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center rounded-2xl px-6 py-3 transition-all duration-300" id="nav-container">
+                <a href="#" class="text-2xl font-extrabold text-white tracking-tighter">
+                    Santi<span class="text-brand-500">Dorado</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#rifa" class="text-sm font-semibold text-slate-300 hover:text-white hover:text-brand-400 transition-colors">La Rifa</a>
+                    <a href="#historia" class="text-sm font-semibold text-slate-300 hover:text-white hover:text-brand-400 transition-colors">Mi Historia</a>
+                    <a href="#servicios" class="text-sm font-semibold text-slate-300 hover:text-white hover:text-brand-400 transition-colors">Servicios Web</a>
+                </div>
+                <div class="md:hidden">
+                    <a href="https://wa.me/573188332243" target="_blank" class="text-brand-500 text-2xl">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Abstract Background Effects -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-600/20 blur-[120px] animate-pulse" style="animation-duration: 8s;"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-gold-500/20 blur-[100px] animate-pulse" style="animation-duration: 10s; animation-delay: 2s;"></div>
+            <div class="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-blue-500/10 blur-[100px]"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-400 text-sm font-semibold tracking-wider uppercase mb-6 reveal">
+                Tu apoyo transforma vidas
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight reveal" style="transition-delay: 100ms;">
+                Un pequeño apoyo tuyo,<br>
+                <span class="bg-gradient-to-r from-gold-400 via-yellow-200 to-gold-500 text-gradient">un gran paso para mi futuro.</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-300 font-body mb-10 max-w-3xl mx-auto reveal" style="transition-delay: 200ms;">
+                Ayúdame a costear mi entrenamiento de maestría en el ser en Celider. Participa en mi rifa, apoya mi crecimiento personal y llévate increíbles premios.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5 reveal" style="transition-delay: 300ms;">
+                <a href="#rifa" class="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(147,51,234,0.7)] flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-ticket"></i> Comprar mi número
+                </a>
+                <a href="#historia" class="px-8 py-4 glass text-white font-bold rounded-xl transition-all hover:bg-white/10 flex items-center justify-center gap-2">
+                    Conoce mi historia <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- La Rifa Section -->
+    <section id="rifa" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">La Gran <span class="text-brand-500">Rifa</span></h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto font-body">100 números, 2 premios increíbles y la oportunidad de ser parte de mi transformación.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 space-y-6">
+                    
+                    <div class="glass p-8 rounded-3xl relative overflow-hidden group reveal" style="transition-delay: 100ms;">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
+                            <i class="fa-solid fa-trophy text-8xl text-gold-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gold-400 mb-2 relative z-10 uppercase tracking-wide text-sm">Primer Premio</h3>
+                        <p class="text-5xl md:text-6xl font-extrabold text-white mb-4 relative z-10">$500.000 <span class="text-2xl text-slate-400">COP</span></p>
+                        <p class="text-slate-300 font-body relative z-10">¡Un solo ganador por premio! Dinero en efectivo directo para ti.</p>
+                    </div>
+
+                    <div class="glass p-8 rounded-3xl relative overflow-hidden group reveal" style="transition-delay: 200ms;">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
+                            <i class="fa-solid fa-gift text-8xl text-brand-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-400 mb-2 relative z-10 uppercase tracking-wide text-sm">Segundo Premio</h3>
+                        <p class="text-3xl font-bold text-white mb-4 relative z-10">Chocolates Premium Sprinks</p>
+                        <p class="text-slate-300 font-body relative z-10">Un premio delicioso, memorable y premium, donado amablemente para esta causa.</p>
+                    </div>
+
+                    <div class="glass p-8 rounded-3xl bg-gradient-to-br from-brand-900/40 to-slate-900 border-brand-500/30 reveal" style="transition-delay: 300ms;">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-sm uppercase tracking-wider text-slate-400 mb-1">Valor por número</h3>
+                                <p class="text-4xl font-bold text-gold-400">$10.000</p>
+                            </div>
+                            <div class="mt-4 sm:mt-0 text-right">
+                                <p class="text-sm font-body text-slate-300"><i class="fa-solid fa-calendar text-brand-400 mr-2"></i>Sorteo en vivo transparente</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-slate-700/50 pt-6 mb-6">
+                            <h4 class="text-sm uppercase tracking-wider text-slate-400 mb-4">Medios de pago</h4>
+                            <div class="flex flex-wrap gap-4">
+                                <span class="px-4 py-2 bg-slate-800 rounded-lg text-sm font-semibold flex items-center"><i class="fa-solid fa-money-bill text-green-400 mr-2"></i> Efectivo</span>
+                                <span class="px-4 py-2 bg-slate-800 rounded-lg text-sm font-semibold flex items-center"><i class="fa-solid fa-mobile-screen text-purple-400 mr-2"></i> Nequi</span>
+                                <span class="px-4 py-2 bg-slate-800 rounded-lg text-sm font-semibold flex items-center"><i class="fa-solid fa-building-columns text-blue-400 mr-2"></i> Bre-B</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/573188332243?text=Hola%20Santiago,%20quiero%20apoyarte%20y%20comprar%20un%20n%C3%BAmero%20de%20la%20rifa" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+                            <i class="fa-brands fa-whatsapp text-2xl mr-3"></i> ¡Reserva tu número ahora!
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2 reveal relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-gold-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <img src="WhatsApp Image 2026-07-06 at 1.31.48 PM.jpeg" alt="Poster Oficial de la Rifa" class="relative w-full rounded-3xl shadow-2xl transform transition duration-500 hover:scale-[1.01] border border-slate-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section id="historia" class="py-24 bg-slate-900 relative z-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-8">Conoce Mi <span class="text-brand-500">Historia</span></h2>
+                    <div class="space-y-6 text-lg text-slate-300 font-body leading-relaxed">
+                        <p>
+                            Hola, mi nombre es <strong class="text-white">Santiago Dorado</strong>. Soy Analista y Desarrollador de Software, y desde el año 2022, un orgulloso artista del <strong>Carnaval de Negros y Blancos</strong>.
+                        </p>
+                        <p>
+                            Cuando era niño, sufría constantes golpes en el colegio por el bullying. Al ser el más grande del salón, se volvió costumbre que me dijeran <em>"todos contra el Dorado"</em>. Vivía con miedo de ir a estudiar y, para evitar el dolor, me inventé una historia en mi, como forma de escape: al llegar a casa escondía mis tareas o las dejaba debajo del pupitre. Hacerlas significaba recordar el colegio, así que prefería evadir la realidad, encerrarme a jugar videojuegos o jugar fútbol con mis amigos hasta tarde.
+                        </p>
+                        <p>
+                            Hoy me doy cuenta de que esa herida me llevó a cerrarme, a ignorar situaciones y evadir los problemas con tal de no sentir dolor. He vivido sin participar plenamente, perdiéndome del mundo y de las cosas maravillosas que tiene para ofrecer.
+                        </p>
+                        <p class="pl-4 border-l-4 border-brand-500 italic text-slate-200">
+                            "Pero lo que realmente quiero para mí, para mi vida, es elegir enfrentar mis miedos y participar activamente en este mundo del que me he estado perdiendo."
+                        </p>
+                        <p>
+                            Por esta razón, estoy realizando un entrenamiento de <strong class="text-white">maestría en el ser en Celider</strong>. A través de esta formación, nos enseñan a entrar en nuestro pasado para ese mundo que no conozco y me pierdo, a entender por qué merecemos vivir una vida alegre.
+                        </p>
+                        <p class="font-semibold text-gold-400">
+                            Tu apoyo comprando o compartiendo esta rifa no es solo dinero; es un impulso vital para ayudarme a seguir creciendo, enfrentar mis miedos y cumplir mis metas.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay: 200ms;">
+                    <div class="space-y-4">
+                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM-3.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago en el Carnaval">
+                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago Dorado Retrato">
+                    </div>
+                    <div class="space-y-4 mt-8">
+                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM-2.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago Programando">
+                        <img src="WhatsApp Image 2026-07-06 at 1.32.12 PM.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Momentos de Santiago">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-24 text-center reveal">
+                <h3 class="text-3xl font-extrabold mb-10">Un vistazo a mi vida y mi arte</h3>
+                <div class="flex justify-center">
+                    <div class="w-full md:w-2/3 lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group">
+                        <video src="WhatsApp Video 2026-07-06 at 1.30.10 PM.mp4" controls class="w-full h-full object-cover"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl rounded-full bg-brand-600/10 blur-[120px]"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <div class="glass p-10 md:p-14 rounded-[2.5rem] text-center md:text-left reveal">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-brand-500 to-purple-400 flex items-center justify-center flex-shrink-0 shadow-[0_0_30px_rgba(147,51,234,0.4)]">
+                        <i class="fa-solid fa-laptop-code text-4xl text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">¿Te gusta <span class="text-brand-400">el diseño de esta web?</span></h2>
+                        <p class="text-lg text-slate-300 font-body mb-6">
+                            Como Analista y Desarrollador de Software, también ofrezco mis servicios para crear <strong class="text-white">Landing Pages, sitios web y diseños modernos</strong> como este. Todo lo recaudado por mi trabajo también será destinado a costear mi entrenamiento en Celider.
+                        </p>
+                        <a href="https://wa.me/573188332243?text=Hola%20Santiago,%20me%20gust%C3%B3%20tu%20sitio%20web%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" class="inline-flex items-center text-brand-400 font-bold hover:text-white transition-colors group">
+                            <span class="border-b border-brand-400 group-hover:border-white pb-1">Cotiza tu proyecto web conmigo</span>
+                            <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-slate-800 bg-slate-950 text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <a href="#" class="text-2xl font-extrabold text-white tracking-tighter block mb-6">
+                Santi<span class="text-brand-500">Dorado</span>
+            </a>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://wa.me/573188332243" target="_blank" class="text-slate-400 hover:text-green-500 text-2xl transition-colors">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+            <p class="text-slate-500 font-body text-sm">
+                Diseñado y desarrollado con <i class="fa-solid fa-heart text-brand-500 mx-1"></i> por Santiago Dorado.<br>
+                ¡Gracias por creer y ser parte de este sueño!
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Sticky Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const navContainer = document.getElementById('nav-container');
+            
+            if (window.scrollY > 50) {
+                nav.classList.remove('py-4');
+                nav.classList.add('py-2');
+                navContainer.classList.add('glass', 'shadow-lg');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+                navContainer.classList.remove('glass', 'shadow-lg');
+            }
+        });
+        
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
