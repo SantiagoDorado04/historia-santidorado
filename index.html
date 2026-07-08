@@ -188,7 +188,7 @@
                 
                 <div class="order-1 lg:order-2 reveal relative group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-gold-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                    <img src="WhatsApp Image 2026-07-06 at 1.31.48 PM.jpeg" alt="Poster Oficial de la Rifa" class="relative w-full rounded-3xl shadow-2xl transform transition duration-500 hover:scale-[1.01] border border-slate-700">
+                    <img src="WhatsApp Image 2026-07-06 at 1.31.48 PM.jpeg" alt="Poster Oficial de la Rifa" loading="lazy" class="relative w-full rounded-3xl shadow-2xl transform transition duration-500 hover:scale-[1.01] border border-slate-700">
                 </div>
             </div>
         </div>
@@ -224,12 +224,12 @@
                 
                 <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay: 200ms;">
                     <div class="space-y-4">
-                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM-3.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago en el Carnaval">
-                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago Dorado Retrato">
+                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM-3.jpeg" loading="lazy" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago en el Carnaval">
+                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM.jpeg" loading="lazy" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago Dorado Retrato">
                     </div>
                     <div class="space-y-4 mt-8">
-                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM-2.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago Programando">
-                        <img src="WhatsApp Image 2026-07-06 at 1.32.12 PM.jpeg" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Momentos de Santiago">
+                        <img src="WhatsApp Image 2026-07-06 at 1.39.13 PM-2.jpeg" loading="lazy" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Santiago Programando">
+                        <img src="WhatsApp Image 2026-07-06 at 1.32.12 PM.jpeg" loading="lazy" class="rounded-2xl object-cover h-48 sm:h-64 w-full hover:opacity-80 transition duration-300 cursor-pointer shadow-lg" alt="Momentos de Santiago">
                     </div>
                 </div>
             </div>
@@ -238,7 +238,7 @@
                 <h3 class="text-3xl font-extrabold mb-10">Un vistazo a mi vida y mi arte</h3>
                 <div class="flex justify-center">
                     <div class="w-full md:w-2/3 lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group">
-                        <video src="WhatsApp Video 2026-07-06 at 1.30.10 PM.mp4" controls class="w-full h-full object-cover"></video>
+                        <video src="WhatsApp Video 2026-07-06 at 1.30.10 PM.mp4" controls preload="metadata" playsinline class="w-full h-full object-cover"></video>
                     </div>
                 </div>
             </div>
@@ -307,22 +307,33 @@
             }
         });
         
-        // Scroll Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        // Trigger once on load
-        reveal();
+        // Scroll Reveal Animation via IntersectionObserver (Optimized for Mobile)
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.05,
+                rootMargin: "0px 0px -20px 0px"
+            });
+
+            document.querySelectorAll(".reveal").forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // Fallback for immediate visibility in case of slow observers
+            setTimeout(() => {
+                document.querySelectorAll(".reveal:not(.active)").forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add("active");
+                    }
+                });
+            }, 500);
+        });
     </script>
 </body>
 </html>
