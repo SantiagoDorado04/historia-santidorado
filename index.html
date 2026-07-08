@@ -54,7 +54,7 @@
                 <span class="bg-gradient-to-r from-gold-400 via-yellow-200 to-gold-500 text-gradient">un gran paso para mi futuro.</span>
             </h1>
             <p class="text-lg md:text-2xl text-slate-300 font-body mb-10 max-w-3xl mx-auto reveal" style="transition-delay: 200ms;">
-                Ayúdame a costear mi entrenamiento de maestría en el ser en Celider. Participa en mi rifa, apoya mi crecimiento personal y llévate increíbles premios.
+                Ayúdame a costear mi entrenamiento de maestría en el ser - rompiendo limites en Celider. Participa en mi rifa, apoya mi crecimiento personal y llévate increíbles premios.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-5 reveal" style="transition-delay: 300ms;">
                 <a href="#rifa" class="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(147,51,234,0.7)] flex items-center justify-center gap-2">
@@ -116,9 +116,12 @@
                             </div>
                         </div>
 
-                        <a href="https://wa.me/573188332243?text=Hola%20Santiago,%20quiero%20apoyarte%20y%20comprar%20un%20n%C3%BAmero%20de%20la%20rifa" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+                        <a href="https://wa.me/573188332243?text=Hola%20Santiago,%20quiero%20apoyarte%20y%20comprar%20un%20n%C3%BAmero%20de%20la%20rifa" target="_blank" class="inline-flex items-center justify-center w-full px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] mb-4">
                             <i class="fa-brands fa-whatsapp text-2xl mr-3"></i> ¡Reserva tu número ahora!
                         </a>
+                        <button onclick="openModal()" class="inline-flex items-center justify-center w-full px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition-all border border-slate-600">
+                            <i class="fa-solid fa-list-ol text-xl mr-3"></i> Ver Números Disponibles
+                        </button>
                     </div>
                 </div>
                 
@@ -150,7 +153,7 @@
                             "Pero lo que realmente quiero para mí, para mi vida, es elegir enfrentar mis miedos y participar activamente en este mundo del que me he estado perdiendo."
                         </p>
                         <p>
-                            Por esta razón, estoy realizando un entrenamiento de <strong class="text-white">maestría en el ser en Celider</strong>. A través de esta formación, nos enseñan a entrar en nuestro pasado para ese mundo que no conozco y me pierdo, a entender por qué merecemos vivir una vida alegre.
+                            Por esta razón, estoy realizando un entrenamiento de <strong class="text-white">maestría en el ser - rompiendo limites en Celider</strong>. A través de esta formación, nos enseñan a entrar en nuestro pasado para ese mundo que no conozco y me pierdo, a entender por qué merecemos vivir una vida alegre.
                         </p>
                         <p class="font-semibold text-gold-400">
                             Tu apoyo comprando o compartiendo esta rifa no es solo dinero; es un impulso vital para ayudarme a seguir creciendo, enfrentar mis miedos y cumplir mis metas.
@@ -242,34 +245,40 @@
                 navContainer.classList.remove('glass', 'shadow-lg');
             }
         });
+        // Modal Logic
+        const modal = document.getElementById('numbersModal');
+        const modalContent = document.getElementById('modalContent');
         
-        // Scroll Reveal Animation via IntersectionObserver (Optimized for Mobile)
-        document.addEventListener("DOMContentLoaded", function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.05,
-                rootMargin: "0px 0px -20px 0px"
-            });
-
-            document.querySelectorAll(".reveal").forEach((el) => {
-                observer.observe(el);
-            });
-            
-            // Fallback for immediate visibility in case of slow observers
+        function openModal() {
+            modal.classList.remove('hidden');
             setTimeout(() => {
-                document.querySelectorAll(".reveal:not(.active)").forEach(el => {
-                    if (el.getBoundingClientRect().top < window.innerHeight) {
-                        el.classList.add("active");
-                    }
-                });
-            }, 500);
-        });
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
     </script>
+
+    <!-- Modal -->
+    <div id="numbersModal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative bg-slate-900 border border-slate-700 p-2 sm:p-4 rounded-3xl max-w-3xl w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300" id="modalContent">
+            <button onclick="closeModal()" class="absolute -top-4 -right-4 bg-red-500 hover:bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <img src="rifa.png" alt="Números Disponibles" class="w-full h-auto rounded-2xl max-h-[85vh] object-contain">
+        </div>
+    </div>
 </body>
 </html>
