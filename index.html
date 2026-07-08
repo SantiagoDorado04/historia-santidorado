@@ -246,10 +246,11 @@
             }
         });
         // Modal Logic
-        const modal = document.getElementById('numbersModal');
-        const modalContent = document.getElementById('modalContent');
-        
         function openModal() {
+            const modal = document.getElementById('numbersModal');
+            const modalContent = document.getElementById('modalContent');
+            if (!modal || !modalContent) return;
+            
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
@@ -260,6 +261,10 @@
         }
         
         function closeModal() {
+            const modal = document.getElementById('numbersModal');
+            const modalContent = document.getElementById('modalContent');
+            if (!modal || !modalContent) return;
+            
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
